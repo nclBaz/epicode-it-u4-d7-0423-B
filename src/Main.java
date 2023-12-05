@@ -139,5 +139,66 @@ public class Main {
 		}
 
 		// ************************************************ MAP ********************************************
+		System.out.println("--------------------------------- MAPS ------------------------------");
+		Map<Integer, User> usersMap = new HashMap<>(); // Ogni elemento della mappa sarà rappresentato da <Chiave, Valore>
+		// In questo caso specifico stiamo dicendo che ogni elemento della mappa avrà chiave di tipo Intero, valore di tipo User
+
+		/* Ogni elemento sarà tipo CHIAVE - VALORE:
+		1123213 - Aldo Baglio
+		25435345 - Giovanni Storti
+		* */
+
+		Map<String, String> dizionario = new HashMap<>(); // Qua invece le chiavi sono Stringhe
+
+		System.out.println("-------------------------------------- AGGIUNTA ELEMENTI --------------------------");
+		usersMap.put(3432432, aldo); // put(chiave, valore)
+		usersMap.put(123123, giovanni);
+		usersMap.put(344343, giacomo);
+
+		dizionario.put("casa", "Definzione di casa");
+		dizionario.put("albero", "Definizione di albero");
+
+		System.out.println("-------------------------------------- LEGGERE ELEMENTI --------------------------");
+
+		System.out.println(usersMap);
+
+		// Ottengo l'elenco delle chiavi (è un SET)
+		Set<Integer> elencoChiavi = usersMap.keySet();
+
+		for (Integer chiave : elencoChiavi) {
+			System.out.println("Chiave " + chiave);
+			System.out.println("Valore " + usersMap.get(chiave));
+		}
+
+		Set<String> elencoChiaviDelDizionario = dizionario.keySet();
+
+		for (String parola : elencoChiaviDelDizionario) {
+			System.out.println("Chiave " + parola);
+			System.out.println("Valore " + dizionario.get(parola));
+		}
+
+		String defizione = dizionario.get("casa");
+		System.out.println("La definizione di casa è : " + defizione);
+
+		System.out.println("-------------------------------------- RIMUOVERE ELEMENTI --------------------------");
+
+		usersMap.remove(344343); // per rimuovere rimuovo tramite la chiave
+		dizionario.remove("casa");
+
+		System.out.println("-------------------------------------- RIMPIAZZARE ELEMENTI --------------------------");
+		dizionario.replace("albero", "Definizione più aggiornata del termine albero");
+
+
+		/*	Analogia con oggetti JS:
+		 const dizionario = {
+				casa: "Definizione di casa",
+				albero: "Definizione di albero"
+			}
+
+		dizionario.casa
+		dizionario.albero
+		*/
+
+
 	}
 }
