@@ -1,6 +1,7 @@
 import entities.User;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -29,5 +30,54 @@ public class Main {
 			System.out.println(user);
 		}
 
+		try {
+			System.out.println("--------------------------------- GET ---------------------------------");
+			User found = usersList.get(1);
+			System.out.println("Il secondo elemento della lista è: " + found);
+			System.out.println("L'indice di Aldo è: " + usersList.indexOf(aldo));
+		} catch (IndexOutOfBoundsException ex) {
+			System.err.println(ex.getMessage());
+		}
+
+		System.out.println("--------------------------------- CONTAINS ---------------------------------");
+		if (usersList.contains(aldo)) { // <-- .contains() internamente utilizza il metodo .equals() degli oggetti in questione, quindi eventualmente posso sovrascriverlo per usare un criterio di comparazione personalizzato
+			System.out.println("La lista contiene Aldo");
+		} else {
+			System.out.println("La lista non contiene Aldo");
+		}
+
+		System.out.println("--------------------------------- REMOVE ---------------------------------");
+		usersList.remove(0);
+		usersList.remove(aldo);
+		System.out.println("La lista ha " + usersList.size() + " elementi.");
+		for (User user : usersList) {
+			System.out.println(user);
+		}
+
+		System.out.println("--------------------------------- CLEAR ---------------------------------");
+		System.out.println("La lista è vuota? " + usersList.isEmpty()); // Verifico se la lista è vuota o no
+		usersList.clear(); // svuoto la lista
+		System.out.println("La lista è vuota? " + usersList.isEmpty()); // Verifico se la lista è vuota o no
+
+		System.out.println("--------------------------------- ADD ALL ---------------------------------");
+		List<User> newList = new ArrayList<>(Arrays.asList(usersArray));
+		usersList.addAll(newList);
+
+		/*		LinkedList<User> newLinkedList = new LinkedList<>();
+		newLinkedList.addAll(newList);*/ // Funziona anche sulle LinkedList
+
+		System.out.println("La lista ha " + usersList.size() + " elementi.");
+		for (User user : usersList) {
+			System.out.println(user);
+		}
+
+		System.out.println("--------------------------------- REMOVE ALL ---------------------------------");
+		usersList.add(new User("Ajeje", "Brazorf", 50));
+		usersList.removeAll(newList); // posso passare una lista di elementi da rimuovere (in questo caso una lista di 3 elementi)
+		System.out.println("La lista ha " + usersList.size() + " elementi.");
+		for (User user : usersList) {
+			System.out.println(user);
+		}
+		
 	}
 }
