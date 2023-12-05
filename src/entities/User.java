@@ -3,7 +3,7 @@ package entities;
 import java.util.Objects;
 import java.util.Random;
 
-public class User {
+public class User implements Comparable<User> {
 	private String name;
 	private String surname;
 	private int age;
@@ -62,5 +62,9 @@ public class User {
 		User user = (User) o;
 		return age == user.age && id == user.id && Objects.equals(name, user.name) && Objects.equals(surname, user.surname);
 	}
-	
+
+	@Override
+	public int compareTo(User o) {
+		return o.getAge() - this.getAge();
+	}
 }

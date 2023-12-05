@@ -1,9 +1,6 @@
 import entities.User;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 	public static void main(String[] args) {
@@ -108,6 +105,39 @@ public class Main {
 		}
 
 		// ******************************************************** SET *************************************************
+		System.out.println("----------------------------------------- SET --------------------------------------------");
+		Set<User> usersSet = new HashSet<>();
+		usersSet.add(aldo);
+		usersSet.add(giovanni);
+		usersSet.add(giacomo);
+		usersSet.add(aldo);
+		// Java non mi avverte se l'elemento che sto cercando di inserire sia duplicato oppure no. Però il metodo .add() restituisce un boolean, quindi ho modo con un if di verificarlo
 
+		for (User user : usersSet) {
+			System.out.println(user);
+		}
+
+		Set<String> lettereSet = new TreeSet<>();
+		lettereSet.add("f");
+		lettereSet.add("b");
+		lettereSet.add("c");
+		lettereSet.add("a");
+		lettereSet.add("f");
+		for (String lettera : lettereSet) {
+			System.out.println(lettera);
+		}
+
+		Set<User> usersTreeSet = new TreeSet<>();
+		// Non posso inserire User normali in un TreeSet. Posso farlo solo se la classe User implementa l'interfaccia Comparable
+		// Implementare l'interfaccia Comparable significa dover implementare il metodo compareTo che è quello che stabiisce il criterio di ordinamento
+		usersTreeSet.add(aldo);
+		usersTreeSet.add(giovanni);
+		usersTreeSet.add(giacomo);
+
+		for (User user : usersTreeSet) {
+			System.out.println(user);
+		}
+
+		// ************************************************ MAP ********************************************
 	}
 }
