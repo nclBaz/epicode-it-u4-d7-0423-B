@@ -2,6 +2,7 @@ import entities.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class Main {
@@ -78,6 +79,35 @@ public class Main {
 		for (User user : usersList) {
 			System.out.println(user);
 		}
-		
+
+		// ****************************************** LINKED LIST ***************************************
+	/*	LinkedList<User> linkedListUsers = new LinkedList<>();
+		// Qua non sto usando l'UPCASTING, il che vuol dire che potrò usare metodi specifici delle LL e non solo quelli comuni a tutte le List.
+		// Di contro non potrò in futuro sostituire in maniera agevole, cambiando una sola riga di codice, una LL con un ArrayList
+		linkedListUsers.pollFirst();*/
+
+		// ***************************************** LISTE E TIPI PRIMITIVI *****************************
+		ArrayList<Integer> listaNumeri = new ArrayList<>(); // Nelle liste non posso inserire tipi primitivi ma solo oggetti
+		// Devo quindi utilizzare le cosiddette WRAPPER CLASSES, ogni tipo primitivo ne ha una corrispondente. Quindi int --> Integer, double --> Double, boolean --> Boolean
+		listaNumeri.add(4);
+
+		// *************************************** ITERATORS *******************************************
+		ArrayList<String> lettere = new ArrayList<>(Arrays.asList("a", "b", "c", "d"));
+/*		for (String lettera : lettere) {
+			if (lettera.equals("b"))
+				lettere.remove(lettera); // Java lancia un'eccezione quando provo a rimuovere un elemento da una lista durante l'iterazione
+			else System.out.println(lettera);
+		}*/
+		// Se voglio rimuovere elementi durante le iterazioni di un ciclo devo usare gli ITERATORS
+		Iterator<String> iterator = lettere.iterator();
+		while (iterator.hasNext()) { // finchè ci sono ulteriori elementi, continua a ciclare
+			String currentLetter = iterator.next(); // .next() mi riestituisce l'elemento corrente
+			if (currentLetter.equals("b"))
+				iterator.remove(); // N.B. non sto faccendo lettere.remove(), sto facendo iterator.remove()
+			else System.out.println(currentLetter);
+		}
+
+		// ******************************************************** SET *************************************************
+
 	}
 }
